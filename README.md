@@ -1,13 +1,13 @@
 # Keep Your Inbox Safe (KYIS): Transformer-Based Email Threat Detection
 
-## Part 1: Introduction
+## Introduction
 Email security threats have become increasingly sophisticated, outpacing many traditional detection mechanisms. Modern malicious emails encompass a wide range of attacks, including phishing, spam, malware-laden messages, scam/fraud attempts, and business email compromise (BEC) schemes. In response to these evolving risks, the objective of **Keep Your Inbox Safe (KYIS)** is to create an advanced neural network-based classification system that accurately identifies various types of email threats.
 
 Rather than simply fine-tuning an existing transformer model (such as BERT), we will focus on **designing a custom transformer-inspired architecture** from scratch specifically tailored to the nuances of next-generation email threats. By introducing new structural elements and comparing them against state-of-the-art solutions, we aim to offer valuable insights into improving email security.
 
 ---
 
-## Part 2: High-Level Solution
+## High-Level Solution
 
 ### Custom Neural Network Architecture
 KYIS will employ a from-scratch neural network design inspired by transformer architectures. Although transformers like BERT provide an excellent foundation for text processing, our goal is to build a custom model that thoroughly addresses the context-specific features of email data. To achieve this, we will experiment with different configurations—such as varying model depth, attention heads, and feed-forward layer sizes—to find the balance between classification accuracy and computational efficiency.
@@ -33,7 +33,7 @@ Measuring performance will involve commonly used metrics such as **accuracy, pre
 
 ---
 
-## Part 3: Data Requirements
+## Data Requirements
 Ensuring high-quality, representative data is critical for building a reliable email classification model. We plan to divide our data into three subsets:
 
 1. **Training Set (80%)** – Used to **learn** model parameters. This subset will contain a balanced distribution of phishing, spam, and benign emails where feasible.  
@@ -48,7 +48,7 @@ Ensuring high-quality, representative data is critical for building a reliable e
 
 ---
 
-## Part 4: Considerations and Challenges
+## Considerations and Challenges
 
 1. **Custom Model Design Complexity**  
    Striking a balance between accuracy and computational efficiency is essential. Since we aim to classify emails in near real-time, the model must be optimized for both speed and accuracy. Additionally, the design must handle a diverse range of writing styles, file types, and languages.
@@ -67,7 +67,7 @@ Ensuring high-quality, representative data is critical for building a reliable e
 
 ---
 
-## Part 5: Next Steps
+## Next Steps
 
 Our development of KYIS will be iterative, continually evolving to tackle challenges encountered during its lifecycle:
 
@@ -82,9 +82,7 @@ Our development of KYIS will be iterative, continually evolving to tackle challe
 
 By proactively planning and implementing these stages, we aim to deliver a robust, scalable, and explainable system for classifying and managing diverse email threats. Through the combination of innovative architecture design and comparative testing with different models, we will demonstrate a deeper understanding and effective solution to modern email security challenges.
 
-
-
-
+---
 
 ## Dataset Description
 
