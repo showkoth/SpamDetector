@@ -115,7 +115,7 @@ The dataset is slightly imbalanced (phishing: ~52%, benign: ~48%). While this im
 
   - The training set contains emails from various sources, ensuring exposure to a wide range of spam tactics.  
   - The validation set contains a mix of seen and unseen patterns to assess generalization.  
-The training set is enriched with metadata (sender info, timestamps, header anomalies) to aid in feature extraction. The validation set retains this structure but contains distinct email samples not seen during training. The spam emails are from multiple senders, often from fraudulent domains.And the benign emails include emails from verified organizations (e.g., corporate communications from Enron).  
+  - The spam emails are from multiple senders, often from fraudulent domains. And the benign emails include emails from verified organizations (e.g., corporate communications from Enron).  
 
 - **Average Words Per Email:**  
   - Phishing Emails: ~120 words  
