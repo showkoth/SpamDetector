@@ -86,7 +86,7 @@ By proactively planning and implementing these stages, we aim to deliver a robus
 
 ## Dataset Description
 
-To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use the **Spam Email Dataset**, a publicly available dataset from Kaggle. This dataset aggregates multiple well-known email repositories, providing a diverse and balanced representation of legitimate and phishing emails.  
+To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use the **Spam Email Dataset**, a publicly available dataset from Kaggle. This dataset aggregates multiple well-known email repositories, providing a diverse and balanced representation of benign and spam emails.  
 
 ### Source Information  
 - **Dataset Name:** Spam Email Dataset  
