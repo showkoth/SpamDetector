@@ -20,7 +20,7 @@ A robust data preprocessing phase ensures that our custom model receives high-qu
 3. **Feature Extraction:** Identifying relevant meta-features (sender addresses, header patterns, embedded URLs) that may boost detection performance.
 
 ### Multi-Class Classification
-We will initially categorize emails into three major classes: **phishing, spam, and benign**. However, we will also design the model to easily incorporate additional malicious categories in the future—such as **spear-phishing** and **BEC**. The ability to adapt to emerging threats is a priority, ensuring that KYIS remains effective as adversaries evolve their tactics.
+We will initially categorize emails into three major classes: **spam, and benign**. However, we will also design the model to easily incorporate additional malicious categories in the future—such as **phishing** and **BEC**. The ability to adapt to emerging threats is a priority, ensuring that KYIS remains effective as adversaries evolve their tactics.
 
 ### Comparison with State-of-the-Art Models
 An integral part of our project involves benchmarking KYIS against established industry or research-level solutions. We plan to:
@@ -52,7 +52,7 @@ Ensuring high-quality, representative data is critical for building a reliable e
 
 1. **Custom Model Design Complexity**  
    Striking a balance between accuracy and computational efficiency is essential. Since we aim to classify emails in near real-time, the model must be optimized for both speed and accuracy. Additionally, the design must handle a diverse range of writing styles, file types, and languages.
- (
+
 2. **Feature Engineering**  
    While textual analysis is primary, metadata-based features (e.g., IP addresses, domain reputations, email header anomalies) can provide important cues. Identifying and integrating these features effectively could significantly enhance the model’s robustness.
 
@@ -81,3 +81,78 @@ Our development of KYIS will be iterative, continually evolving to tackle challe
    Compare KYIS to state-of-the-art pre-trained transformers, simpler machine learning approaches, or existing research work in the literature. Use these insights to refine the architecture and model performance.
 
 By proactively planning and implementing these stages, we aim to deliver a robust, scalable, and explainable system for classifying and managing diverse email threats. Through the combination of innovative architecture design and comparative testing with different models, we will demonstrate a deeper understanding and effective solution to modern email security challenges.
+
+
+
+
+
+## Dataset Description
+
+To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use the **Spam Email Dataset**, a publicly available dataset from Kaggle. This dataset aggregates multiple well-known email repositories, providing a diverse and balanced representation of legitimate and phishing emails.  
+
+### Source Information  
+- **Dataset Name:** Spam Email Dataset  
+- **Download Link:** [Kaggle - Spam Email Dataset](https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset/data)  
+- **Associated Datasets:**  
+  - **Enron and Ling Datasets:** Focus on the core textual content of phishing and legitimate emails.  
+  - **CEAS, Nazario, Nigerian Fraud, and SpamAssassin Datasets:** Offer contextual metadata, such as sender and recipient information, timestamps, and spam classification.
+We will use the phishing_email.csv dataset consists of 82,486 email samples and 2 columns:
+   text_combined (string) - The full text of the email (subject + body).
+   label (integer) - Classification label:
+      1 = Spam/Phishing
+      0 = Benign (Non-Spam)
+- **Number of Emails:** 82,500  
+- **Composition:**  
+  - 42,891 spam emails  
+  - 39,595 benign emails  
+
+These sources contribute to a comprehensive dataset, covering a broad spectrum of spam tactics and legitimate communication styles.  
+To ensure optimal model performance, we divide the dataset into three subsets:  
+
+- **Training Set (80%)** → 66,000 emails  
+- **Validation Set (10%)** → 8,250 emails  
+- **Test Set (10%)** → 8,250 emails  
+
+The dataset is slightly imbalanced (phishing: ~52%, benign: ~48%). While this imbalance is manageable, we will use **oversampling/undersampling techniques** to improve model generalization.
+
+  - The training set contains emails from various sources, ensuring exposure to a wide range of spam tactics.  
+  - The validation set contains a mix of seen and unseen patterns to assess generalization.  
+The training set is enriched with metadata (sender info, timestamps, header anomalies) to aid in feature extraction. The validation set retains this structure but contains distinct email samples not seen during training. The spam emails are from multiple senders, often from fraudulent domains.And the benign emails include emails from verified organizations (e.g., corporate communications from Enron).  
+
+- **Average Words Per Email:**  
+  - Phishing Emails: ~120 words  
+  - Benign Emails: ~180 words  
+While phishing emails tend to be shorter and often contain urgent calls to action, benign emails vary in length, structure, and complexity.  
+
+### Characterization of Email Samples  
+
+#### Structure of Each Sample  
+Each email sample in the dataset contains:
+- Full Email Text (text_combined): A combination of the subject line and body text.
+- Classification Label (label): Indicates whether the email is phishing (1) or benign (0). 
+
+#### Key Features of Each Email Sample
+- Phishing Emails
+   May contain grammatical errors, fake links, and urgency tactics.
+   Often lack personal details and attempt to deceive recipients.
+- Benign Emails
+   Contain structured, professional language.
+   Often include formal greetings, clear subject lines, and well-formed sentences.
+
+#### Email Content & Format  
+- **Spam/Phishing Emails:**  
+   - **Typical Traits:**
+      * High urgency and threats (e.g., "Act Now!", "Immediate Action Required").
+      * Includes deceptive URLs or requests for sensitive information.
+      * May contain gibberish or obfuscated words to evade spam filters.
+  - **Example Subject:** `"Your Account Has Been Compromised! Act Now!"`  
+  - **Example Body:**  
+    > *Dear User, we noticed suspicious activity on your bank account. Please verify your identity immediately by clicking the link below.*  
+
+- **Benign Emails:**  
+  - Well-structured, professional language.
+  - Contextually relevant and often work-related.
+  - Does not contain deceptive links or suspicious requests.
+  - **Example Subject:** `"Meeting Reminder: Q3 Financial Report"`  
+  - **Example Body:**  
+    > *Hi John, please find attached the Q3 financial report for review. Let's discuss in our next meeting.*   
