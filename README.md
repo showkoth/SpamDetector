@@ -90,8 +90,11 @@ To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use t
 
 ### Source Information  
 - **Dataset Name:** Spam Email Dataset  
-- **Download Link:** [Kaggle - Spam Email Dataset](https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset/data)  
-- **Associated Datasets:**  
+- **Download Link:** [Kaggle - Spam Email Dataset](https://www.kaggle.com/datasets/naserabdullahalam/phishing-email-dataset/data)
+- **Reference to Original Collections:**
+   - Enron Email Dataset: [CMU Enron Page](https://www.cs.cmu.edu/~enron/)
+   - SpamAssassin Public Corpus: Provided by The Apache Software Foundation. [Link](https://spamassassin.apache.org/)
+- **Associated Datasets Details:**  
   - **Enron and Ling Datasets:** Focus on the core textual content of phishing and legitimate emails.  
   - **CEAS, Nazario, Nigerian Fraud, and SpamAssassin Datasets:** Offer contextual metadata, such as sender and recipient information, timestamps, and spam classification.
   - **Dataset Details:** We will use the **phishing_email.csv** dataset, which consists of 82,486 email samples and 2 columns:  
@@ -107,15 +110,20 @@ To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use t
 These sources contribute to a comprehensive dataset, covering a broad spectrum of spam tactics and legitimate communication styles.  
 To ensure optimal model performance, we divide the dataset into three subsets:  
 
-- **Training Set (80%)** → 66,000 emails  
-- **Validation Set (10%)** → 8,250 emails  
-- **Test Set (10%)** → 8,250 emails  
+### Train/Validation/Test Split
+To ensure reliable model development and evaluation, we divide the dataset into three subsets:
 
-The dataset is slightly imbalanced (phishing: ~52%, benign: ~48%). While this imbalance is manageable, we will use **oversampling/undersampling techniques** to improve model generalization.
+- Training Set (80%) → 66,000 emails
 
-  - The training set contains emails from various sources, ensuring exposure to a wide range of spam tactics.  
-  - The validation set contains a mix of seen and unseen patterns to assess generalization.  
-  - The spam emails are from multiple senders, often from fraudulent domains. And the benign emails include emails from verified organizations (e.g., corporate communications from Enron).  
+This large portion includes a broad mix of spam messages from diverse sources: Nigerian scams, phishing attempts from suspicious domains, and obfuscated spam. Benign emails include real corporate communications (e.g., Enron archives) and personal correspondences.
+Because the training set is slightly imbalanced (~52% spam vs. 48% benign), we apply oversampling/undersampling techniques to avoid model bias.
+- Validation Set (10%) → 8,250 emails
+
+Contains a balanced mini-collection of the same email sources as the training set, plus a small portion of emails with newly encountered phrases, domains, or obfuscation methods. This design helps ensure our model is evaluated on patterns that partially overlap with but are not entirely identical to those in the training data.
+These differences matter because modern spam evolves quickly—new linguistic tricks or scam strategies appear regularly. Evaluating on near-novel patterns helps us monitor the model’s robustness and generalization.
+- Test Set (10%) → 8,250 emails
+
+Provides a final, unbiased assessment of the model. Like the validation set, it includes a range of spam messages from multiple sources, as well as legitimate emails that mirror actual workplace communication scenarios.
 
 - **Average Words Per Email:**  
   - Phishing Emails: ~120 words  
