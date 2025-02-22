@@ -94,12 +94,12 @@ To effectively train and evaluate **Keep Your Inbox Safe (KYIS)**, we will use t
 - **Associated Datasets:**  
   - **Enron and Ling Datasets:** Focus on the core textual content of phishing and legitimate emails.  
   - **CEAS, Nazario, Nigerian Fraud, and SpamAssassin Datasets:** Offer contextual metadata, such as sender and recipient information, timestamps, and spam classification.
-  - We will use the **phishing_email.csv** dataset consists of 82,486 email samples and 2 columns:
-   text_combined (string) - The full text of the email (subject + body).
-   label (integer) - Classification label:
-      1 = Spam/Phishing
-      0 = Benign (Non-Spam)
-- **Number of Emails:** 82,500  
+  - **Dataset Details:** We will use the **phishing_email.csv** dataset, which consists of 82,486 email samples and 2 columns:  
+      - **text_combined (string):** The full text of the email (subject + body).  
+      - **label (integer):** Classification label:  
+         - `1` = Spam/Phishing  
+         - `0` = Benign (Non-Spam
+- **Number of Emails:** 82,486  
 - **Composition:**  
   - 42,891 spam emails  
   - 39,595 benign emails  
