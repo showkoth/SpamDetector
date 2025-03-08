@@ -102,7 +102,7 @@ This particular host compiles emails from multiple sources, ensuring variety in 
       - **text_combined (string):** The full text of the email (subject + body).  
       - **label (integer):** Classification label:  
          - `1` = Spam/Phishing  
-         - `0` = Benign (Non-Spam
+         - `0` = Ham (Non-Spam)
 - **Number of Emails:** 82,486  
 - **Composition:**  
   - 42,891 spam emails  
