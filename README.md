@@ -20,7 +20,7 @@ A robust data preprocessing phase ensures that our custom model receives high-qu
 3. **Feature Extraction:** Identifying relevant meta-features (sender addresses, header patterns, embedded URLs) that may boost detection performance.
 
 ### Multi-Class Classification
-We will initially categorize emails into three major classes: **spam, and benign**. However, we will also design the model to easily incorporate additional malicious categories in the future—such as **phishing** and **BEC**. The ability to adapt to emerging threats is a priority, ensuring that KYIS remains effective as adversaries evolve their tactics.
+We will initially categorize emails into two major classes: **spam, and ham**. However, we will also design the model to easily incorporate additional malicious categories in the future—such as **phishing** and **BEC**. The ability to adapt to emerging threats is a priority, ensuring that KYIS remains effective as adversaries evolve their tactics.
 
 ### Comparison with State-of-the-Art Models
 An integral part of our project involves benchmarking KYIS against established industry or research-level solutions. We plan to:
