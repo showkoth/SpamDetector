@@ -75,19 +75,24 @@ The model achieved exceptional performance on the test set:
 
 **Detailed Metrics Analysis**
 The classification report shows balanced performance across both classes:
-precision    recall  f1-score   support
 
-           0       0.99      0.99      0.99      3299
-           1       0.99      0.99      0.99      3370
+| Class     | Precision | Recall | F1-Score | Support |
+|-----------|-----------|--------|----------|---------|
+| Ham (0)   | 0.99      | 0.99   | 0.99     | 3299    |
+| Spam (1)  | 0.99      | 0.99   | 0.99     | 3370    |
 
-    accuracy                           0.99      6669
-   macro avg       0.99      0.99      0.99      6669
-weighted avg       0.99      0.99      0.99      6669
+**Overall Metrics**
 
-Where:
+| Metric         | Score |
+|----------------|-------|
+| Accuracy       | 0.99  |
+| Macro Avg F1   | 0.99  |
+| Weighted Avg F1| 0.99  |
+| Total Samples  | 6669  |
 
-Class 0: Ham (legitimate emails)
-Class 1: Spam emails
+> **Note**:  
+> - **Class 0**: Ham (legitimate emails)  
+> - **Class 1**: Spam emails
 
 These metrics are particularly important in spam detection because:
 
