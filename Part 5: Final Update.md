@@ -71,9 +71,9 @@ The model was fine-tuned with the following parameters:
 - Optimizer: AdamW (implicit in the Trainer API)
 - Mixed precision training (FP16) for efficiency
 
-# 🧪 Performance Evaluation
+# Performance Evaluation
 
-## 🔧 Training and Validation Performance
+## Training and Validation Performance
 
 The model showed steady improvements across training epochs. The table below summarizes the training and validation loss along with overall accuracy:
 
@@ -91,21 +91,21 @@ The model showed steady improvements across training epochs. The table below sum
 
 ---
 
-## 📊 Test Set Classification Metrics
+## Test Set Classification Metrics
 
 - **Accuracy**: 99.36%
 - **Precision**: 0.99 (for both spam and ham)
 - **Recall**: 0.99 (for both spam and ham)
 - **F1-Score**: 0.99 (for both spam and ham)
 
-### 🔍 Class-wise Breakdown
+### Class-wise Breakdown
 
 | Class    | Precision | Recall | F1-Score | Support |
 | -------- | --------- | ------ | -------- | ------- |
 | Ham (0)  | 0.99      | 0.99   | 0.99     | 3,299   |
 | Spam (1) | 0.99      | 0.99   | 0.99     | 3,370   |
 
-### 📈 Overall Metrics
+### Overall Metrics
 
 | Metric             | Score  |
 | ------------------ | ------ |
@@ -121,7 +121,7 @@ The model showed steady improvements across training epochs. The table below sum
 
 ---
 
-## 📌 Confusion Matrix
+## Confusion Matrix
 
 ![Confusion Matrix](results/distilbert/distilbert_conf_matrix.png)
 
@@ -136,13 +136,13 @@ This distribution confirms the model's strong performance, with **only 43 total 
 
 ---
 
-# 📈 Model Visualization
+# Model Visualization
 
 To better understand the internal behavior of our DistilBERT-based spam detection model, we employ two visualization techniques: **t-SNE** for high-dimensional embedding analysis and **ROC curve** for classification performance evaluation.
 
 ---
 
-## 🧬 t-SNE Visualization
+## t-SNE Visualization
 
 ![t-SNE Visualization](/results/distilbert/t-SNE.png)
 
@@ -159,7 +159,7 @@ The figure above shows a t-distributed Stochastic Neighbor Embedding (t-SNE) plo
 
 ---
 
-## 📊 ROC Curve
+## ROC Curve
 
 ![ROC Curve](results/distilbert/roc_curve.png)
 
@@ -179,7 +179,7 @@ The Receiver Operating Characteristic (ROC) curve illustrates the trade-off betw
 
 These visualizations further validate the **reliability**, **robustness**, and **interpretability** of our DistilBERT-based spam detection model.
 
-# 📊 Model Comparison
+# Model Comparison
 
 ## Comparison with other Neural Networks Model
 
@@ -319,7 +319,7 @@ For this model, we already discussed the model architecture and performance in t
 
 ---
 
-### 📌 Comparison Summary Table
+### Comparison Summary Table
 
 | Model                    | Accuracy | FP  | FN  | Total Errors | Comments                           |
 | ------------------------ | -------- | --- | --- | ------------ | ---------------------------------- |
@@ -330,13 +330,13 @@ For this model, we already discussed the model architecture and performance in t
 
 ---
 
-## 📉 Learning Curve Analysis
+## Learning Curve Analysis
 
 The training and validation loss/accuracy curves provide crucial insights into each model’s learning dynamics and generalization behavior. Below, we analyze each model individually based on the uploaded visualizations.
 
 ---
 
-### 🧠 MLP Model
+### MLP Model
 
 ![MLP Training Curves](/results/mlp/mlp_training.png)
 
@@ -347,7 +347,7 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 ---
 
-### 🧬 CNN Model
+### CNN Model
 
 ![CNN Training Curves](/results/cnn/cnn_training.png)
 
@@ -358,7 +358,7 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 ---
 
-### 🧠 Word2Vec + Classifier
+### Word2Vec + Classifier
 
 ![Word2Vec Training Curves](results/word2vec/w2vec_training.png)
 
@@ -369,7 +369,7 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 ---
 
-### ⚡ DistilBERT Model
+### DistilBERT Model
 
 ![DistilBERT Training Curves](/results/distilbert/distilbert_training.png)
 
@@ -380,14 +380,14 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 ---
 
-### 🔍 Summary Insights
+### Summary Insights
 
 - **DistilBERT** outperforms the others with minimal overfitting and highest generalization accuracy.
 - **MLP and CNN** show strong learning capability and generalize well, though CNN converges faster.
 - **Word2Vec** demonstrates clear overfitting, performing significantly worse on unseen data despite high training accuracy.
 - In real-world spam detection, **minimizing false negatives (missed spam)** is critical. Word2Vec's tendency to misclassify spam as legitimate emails highlights a practical concern despite its speed.
 
-## 🔍 Comparison with Existing Literature (BERT-Based Approaches)
+## Comparison with Existing Literature (BERT-Based Approaches)
 
 To assess the relative performance and novelty of our DistilBERT-based spam detection model, we compare it against two recent works that also employed transformer-based models, particularly BERT or its successors, on the **Enron Spam Dataset**.
 
@@ -432,7 +432,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 
 ---
 
-### ✅ Our DistilBERT-Based Approach
+### Our DistilBERT-Based Approach
 
 - **Model Used**: Fine-tuned `distilbert-base-uncased`
 - **Dataset**: Enron Spam Dataset
@@ -452,7 +452,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 
 ---
 
-### 📌 Summary Table
+### Summary Table
 
 | Work                   | Model      | Accuracy | F1 Score | FNR    | Notes                              |
 | ---------------------- | ---------- | -------- | -------- | ------ | ---------------------------------- |
@@ -462,7 +462,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 
 ---
 
-### 🧠 Key Insights
+### Key Insights
 
 - Our model **outperforms** both XLNet and BERT-based implementations on the same dataset, with **higher accuracy and F1 score**.
 - **DistilBERT achieves competitive results with significantly fewer parameters**, making it suitable for real-time spam filtering.
