@@ -381,11 +381,11 @@ The training and validation loss/accuracy curves provide crucial insights into e
 - **Word2Vec** demonstrates clear overfitting, performing significantly worse on unseen data despite high training accuracy.
 - In real-world spam detection, **minimizing false negatives (missed spam)** is critical. Word2Vec's tendency to misclassify spam as legitimate emails highlights a practical concern despite its speed.
 
-## 🔍 Comparison with Existing BERT-Based Approaches
+## 🔍 Comparison with Existing Literature (BERT-Based Approaches)
 
 To assess the relative performance and novelty of our DistilBERT-based spam detection model, we compare it against two recent works that also employed transformer-based models, particularly BERT or its successors, on the **Enron Spam Dataset**.
 
-### 1. **Shrestha et al. (2023)** – University of Toledo Thesis
+### 1. [**Shrestha et al. (2023)** – University of Toledo Thesis](https://www.utoledo.edu/engineering/eecs/research/thesis/Shrestha,%20Neeraj.pdf)
 
 - **Model Used**: Fine-tuned XLNet (successor of BERT)
 - **Dataset**: Enron Spam Dataset
@@ -404,7 +404,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
   - Higher computational overhead
   - No evidence of adversarial or cross-domain evaluation
 
-### 2. **Tang & Li (2024)** – Johns Hopkins Study
+### 2. [**Tang & Li (2024)** – Johns Hopkins Study](https://arxiv.org/abs/2504.09776)
 
 - **Model Used**: Fine-tuned BERT (HuggingFace `BertForSequenceClassification`)
 - **Dataset**: Enron
