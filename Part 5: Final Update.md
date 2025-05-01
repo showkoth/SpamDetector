@@ -385,7 +385,7 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 To assess the relative performance and novelty of our DistilBERT-based spam detection model, we compare it against two recent works that also employed transformer-based models, particularly BERT or its successors, on the **Enron Spam Dataset**.
 
-### 1. [**Shrestha et al. (2023)** – University of Toledo Thesis](https://www.utoledo.edu/engineering/eecs/research/thesis/Shrestha,%20Neeraj.pdf)
+### 1. [**Shrestha et al. (2023)** – University of Toledo Thesis](https://etd.ohiolink.edu/acprod/odb_etd/r/etd/search/10?p10_accession_num=toledo1691172363724179&clear=10&session=113242058243869)
 
 - **Model Used**: Fine-tuned XLNet (successor of BERT)
 - **Dataset**: Enron Spam Dataset
