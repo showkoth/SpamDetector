@@ -37,9 +37,9 @@ The test set was separated to introduce distribution shifts that test generaliza
 - Sender Diversity: The test set contains emails from a different distribution of senders than the training set, particularly for legitimate emails.
 - Topic Variation: We ensured the test set contained subject matters and discussion topics that were less represented in the training data.
 - Length Distribution:
-  Average length in training set: 952.4 characters
-  Average length in test set: 1,043.8 characters
-  The test set intentionally includes more lengthy emails, challenging the model to maintain accuracy with longer contexts.
+  - Average length in training set: 952.4 characters
+  - Average length in test set: 1,043.8 characters
+  - The test set intentionally includes more lengthy emails, challenging the model to maintain accuracy with longer contexts.
 
 # Data Preprocessing
 
