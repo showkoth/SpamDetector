@@ -349,9 +349,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 Despite the model's strong performance, several enhancements could be considered:
 
 - Data Augmentation: Introduce variations of existing emails by synonym replacement or LLM generated data.
-- t-SNE Visualization: We can analyze the model embedding using t-SNE to understand the model better.
 - Cross-dataset Evaluation: Test the model on different spam datasets to ensure it generalizes across various types of spam and legitimate emails from different sources and time periods.
-- Compare with other neural networks model.
 
 # Conclusion
 
