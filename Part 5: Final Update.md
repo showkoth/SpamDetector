@@ -381,12 +381,6 @@ The training and validation loss/accuracy curves provide crucial insights into e
 - **Word2Vec** demonstrates clear overfitting, performing significantly worse on unseen data despite high training accuracy.
 - In real-world spam detection, **minimizing false negatives (missed spam)** is critical. Word2Vec's tendency to misclassify spam as legitimate emails highlights a practical concern despite its speed.
 
-### 🔍 Key Insights
-
-- **Transformer advantage**: DistilBERT outperforms others by capturing global context and subtle semantic differences.
-- **Tradeoff**: Simpler models like MLP and Word2Vec require less compute and memory but sacrifice accuracy.
-- **Error distribution**: All models favor lower false negatives over false positives, but DistilBERT maintains the best balance.
-
 ## 🔍 Comparison with Existing BERT-Based Approaches
 
 To assess the relative performance and novelty of our DistilBERT-based spam detection model, we compare it against two recent works that also employed transformer-based models, particularly BERT or its successors, on the **Enron Spam Dataset**.
