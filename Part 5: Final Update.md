@@ -16,12 +16,12 @@ The Enron Spam Dataset was used for this project, comprising:
 - Spam emails: 17,171 (51%)
 - Ham emails: 16,545 (49%)
 
-The dataset is 51.7 MB in size and here is the link for the dataset [`Download Enron Spam Dataset (ZIP, 51.7MB)`](https://github.com/MWiechmann/enron_spam_data/raw/master/enron_spam_data.zip). This is a well-balanced database, with a nearly equal distribution of spam and legitimate emails, which helps prevent class imbalance issues during training.
+The dataset is 51.7 MB in size and here is the link for the dataset [`Download Enron Spam Dataset (ZIP, 51.7MB)`](https://github.com/MWiechmann/enron_spam_data/raw/master/enron_spam_data.zip). This is a well-balanced database, with a nearly equal distribution of spam and legitimate emails, which helps prevent class imbalance issues during training. After the preprocessing step, we have total 33,345 total samples in the dataset.
 The dataset was split as follows:
 
-- Training set: 24,008 emails (80% of the original dataset, minus validation)
-- Validation set: 2,668 emails (10% of the training data)
-- Test set: 6,669 emails (20% of the original dataset)
+- Training set: 24,008 emails (72% of the dataset)
+- Validation set: 2,668 emails (8% of the dataset)
+- Test set: 6,669 emails (20% of the dataset)
 
 The dataset contains email of varible length from 1 character to 4247 characters.
 
