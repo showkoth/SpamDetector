@@ -324,39 +324,62 @@ For this model, we already discussed the model architecture and performance in t
 
 ---
 
-## Learning Curve Analysis
+## 📉 Learning Curve Analysis
 
-The learning curves for each model reveal important insights into their training dynamics:
+The training and validation loss/accuracy curves provide crucial insights into each model’s learning dynamics and generalization behavior. Below, we analyze each model individually based on the uploaded visualizations.
 
-### MLP Model
+---
 
-![alt text](results/mlp/mlp_training.png)
+### 🧠 MLP Model
 
-- Training and validation losses decrease consistently throughout training
-- Both training and validation accuracy reach plateaus around 98-99%
-- No significant gap between training and validation metrics, suggesting good generalization
+![MLP Training Curves](/results/mlp/mlp_training.png)
 
-### CNN Model
+- Both training and validation losses decline smoothly, indicating stable optimization.
+- Training accuracy nears 99.8% while validation accuracy stabilizes around 98.7%.
+- Slight but consistent gap appears between training and validation accuracy after epoch 6, suggesting mild overfitting.
+- Overall, the model generalizes well and converges quickly.
 
-![alt text](results/cnn/cnn_training.png)
+---
 
-- Very rapid initial decrease in loss and increase in accuracy
-- After epoch 4, the training accuracy continues to improve while validation accuracy plateaus
-- Small divergence between training and validation accuracy after epoch 6, but not concerning
+### 🧬 CNN Model
 
-### Word2Vec Model
+![CNN Training Curves](/results/cnn/cnn_training.png)
 
-![alt text](results/word2vec/w2vec_training.png)
+- Steep drop in training loss during the initial epochs, showing fast learning.
+- Training accuracy continues to climb toward 99.6%, while validation accuracy levels off around 98.8%.
+- Minimal overfitting observed; the gap between training and validation curves is small and stable.
+- Indicates effective feature learning through convolutional layers.
 
-- Training loss decreases to near zero while validation loss increases after epoch 3
-- Growing gap between training accuracy (approaching 100%) and validation accuracy (around 98.6%)
-- Clear signs of overfitting despite regularization techniques like dropout and batch normalization
+---
 
-### DistilBERT Model
+### 🧠 Word2Vec + Classifier
 
-![alt text](results/distilbert/training.png)
+![Word2Vec Training Curves](results/word2vec/w2vec_training.png)
 
-All models show excellent precision and recall for both classes, but Word2Vec has a slight tendency to misclassify spam as legitimate, which could be more problematic in a real-world application (missing spam is generally worse than incorrectly flagging legitimate emails).
+- Training loss steadily decreases toward zero, but validation loss starts increasing after ~epoch 4.
+- Training accuracy reaches near-perfect values (~99.9%) while validation accuracy peaks around 98.6%.
+- Increasing discrepancy between training and validation metrics indicates **clear overfitting**.
+- Regularization techniques (dropout, batch normalization) were insufficient to mitigate this trend.
+
+---
+
+### ⚡ DistilBERT Model
+
+![DistilBERT Training Curves](/results/distilbert/distilbert_training.png)
+
+- Training loss decreases steadily across all 4 epochs, and validation loss remains low and stable.
+- Training and validation accuracy curves are closely aligned, both reaching above 99%.
+- No evidence of overfitting or instability.
+- Demonstrates **excellent generalization** with fast convergence and efficient learning.
+
+---
+
+### 🔍 Summary Insights
+
+- **DistilBERT** outperforms the others with minimal overfitting and highest generalization accuracy.
+- **MLP and CNN** show strong learning capability and generalize well, though CNN converges faster.
+- **Word2Vec** demonstrates clear overfitting, performing significantly worse on unseen data despite high training accuracy.
+- In real-world spam detection, **minimizing false negatives (missed spam)** is critical. Word2Vec's tendency to misclassify spam as legitimate emails highlights a practical concern despite its speed.
 
 ### 🔍 Key Insights
 
