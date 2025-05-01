@@ -193,7 +193,7 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
 
 ### 2. **Multilayer Perceptron (MLP)**
 
-### Implementation Details:
+#### Implementation Details:
 
 - **Feature Extraction**: TF-IDF vectorization with 5,000 features
 - **Architecture**:
@@ -230,6 +230,28 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
 
 ### 3. **Convolutional Neural Network (CNN)**
 
+#### Implementation Details:
+
+- **Architecture**:
+  ```
+  TextCNN(
+    (embedding): Embedding(10000, 100, padding_idx=0)
+    (convs): ModuleList(
+      (0): Conv2d(1, 100, kernel_size=(3, 100), stride=(1, 1))
+      (1): Conv2d(1, 100, kernel_size=(4, 100), stride=(1, 1))
+      (2): Conv2d(1, 100, kernel_size=(5, 100), stride=(1, 1))
+    )
+    (fc): Linear(in_features=300, out_features=2, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+  ```
+- **Model Size**: 1,120,902 trainable parameters
+- **Vocabulary**: 10,000 most common words
+- **Embedding Dimension**: 100
+- **Filter Sizes**: 3, 4, and 5 with 100 filters each
+- **Training**: Adam optimizer with learning rate 0.001
+- **Epochs**: 10
+
 ![alt text](results/cnn/cnn_confusion.png)
 
 - **Test Accuracy**: ~**98.86%**
@@ -245,6 +267,33 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Not as expressive as transformers for long-range dependencies
 
 ### 4. **Word2Vec + Logistic Regression**
+
+#### Implementation Details:
+
+- **Word Embeddings**: Custom-trained Word2Vec model on our corpus
+- **Embedding Dimension**: 100
+- **Word2Vec Training**: Skip-gram model with window size 5
+- **Vocabulary Size**: 68,604 words
+- **Document Vector Shape**: (24274, 100)
+- **Classifier Architecture**:
+  ```
+  Word2VecClassifier(
+    (model): Sequential(
+      (0): Linear(in_features=100, out_features=128, bias=True)
+      (1): ReLU()
+      (2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): Dropout(p=0.3, inplace=False)
+      (4): Linear(in_features=128, out_features=64, bias=True)
+      (5): ReLU()
+      (6): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (7): Dropout(p=0.3, inplace=False)
+      (8): Linear(in_features=64, out_features=2, bias=True)
+    )
+  )
+  ```
+- **Model Size**: 21,698 trainable parameters
+- **Training**: Adam optimizer with learning rate scheduling
+- **Epochs**: 20
 
 ![alt text](results/word2vec/w2vec_confusion.png)
 
