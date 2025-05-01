@@ -367,7 +367,7 @@ The training and validation loss/accuracy curves provide crucial insights into e
 
 ![DistilBERT Training Curves](/results/distilbert/distilbert_training.png)
 
-- Training loss decreases steadily across all 4 epochs, and validation loss remains low and stable.
+- Training loss decreases steadily across all 3 epochs, and validation loss remains low and stable.
 - Training and validation accuracy curves are closely aligned, both reaching above 99%.
 - No evidence of overfitting or instability.
 - Demonstrates **excellent generalization** with fast convergence and efficient learning.
