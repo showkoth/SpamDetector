@@ -136,14 +136,6 @@ This distribution confirms the model's strong performance, with **only 43 total 
 
 ---
 
-## 🧠 Why These Metrics Matter
-
-- **Precision**: Minimizes false positives (legitimate emails marked as spam).
-- **Recall**: Minimizes false negatives (spam emails missed by the filter).
-- **F1-Score**: Offers a balanced view, important when both errors carry user impact.
-
-The strong balance between precision and recall ensures that important messages are preserved while harmful content is effectively filtered.
-
 # 📈 Model Visualization
 
 To better understand the internal behavior of our DistilBERT-based spam detection model, we employ two visualization techniques: **t-SNE** for high-dimensional embedding analysis and **ROC curve** for classification performance evaluation.
