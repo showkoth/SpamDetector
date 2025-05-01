@@ -175,7 +175,7 @@ These visualizations further validate the **reliability**, **robustness**, and *
 
 To evaluate the effectiveness of our transformer-based approach, we implemented and compared it with three other commonly used models for text classification: Multilayer Perceptron (MLP), Convolutional Neural Network (CNN), and a Word2Vec + Logistic Regression baseline. The goal was to assess the performance gap between traditional, CNN-based, and transformer-based architectures on the Enron Spam Dataset.
 
-### 1. **DistilBERT (Our model)**
+### 1. **DistilBERT (Our most advanced model)**
 - **Test Accuracy**: **99.36%**
 - **Confusion Matrix**:  
   - Ham correctly classified: 3276  
@@ -187,6 +187,8 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Robust generalization
 
 ### 2. **Multilayer Perceptron (MLP)**
+![alt text](results/mlp/mlp_confusion.png)
+
 - **Test Accuracy**: ~**98.84%**
 - **Confusion Matrix**:  
   - Ham correctly classified: 3264  
@@ -200,6 +202,8 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Struggles slightly more with edge cases
 
 ### 3. **Convolutional Neural Network (CNN)**
+![alt text](results/cnn/cnn_confusion.png)
+
 - **Test Accuracy**: ~**98.86%**
 - **Confusion Matrix**:  
   - Ham correctly classified: 3264  
@@ -213,6 +217,8 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Not as expressive as transformers for long-range dependencies
 
 ### 4. **Word2Vec + Logistic Regression**
+![alt text](results/word2vec/w2vec_confusion.png)
+
 - **Test Accuracy**: ~**97.77%**
 - **Confusion Matrix**:  
   - Ham correctly classified: 3269  
