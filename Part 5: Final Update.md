@@ -6,6 +6,7 @@ This report details the development and evaluation of a machine learning model f
 
 # Data Analysis
 ![Class Distribution](/results/class_distribution.png)
+
 The Enron Spam Dataset was used for this project, comprising:
 
 - Total emails: 33,716
@@ -105,7 +106,7 @@ The model showed steady improvements across training epochs. The table below sum
 
 ## 📌 Confusion Matrix
 
-![Confusion Matrix](./fec68499-356a-48b0-ae16-87fde174eae4.png)
+![Confusion Matrix](results/distilbert/distilbert_conf_matrix.png)
 
 The confusion matrix shows the following counts:
 - **Ham correctly classified**: 3,276
