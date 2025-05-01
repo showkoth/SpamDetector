@@ -5,6 +5,7 @@ Email spam detection remains an important practical problem in digital communica
 This report details the development and evaluation of a machine learning model for email spam detection using a deep learning approach with DistilBERT, a lightweight version of BERT (Bidirectional Encoder Representations from Transformers). The model was trained on the Enron Spam Dataset and achieved high classification accuracy (99.36%) on both validation and test sets. Analysis of performance metrics shows balanced precision and recall scores, indicating that the model is effective at identifying both spam and legitimate emails with minimal false positives and false negatives.
 
 # Data Analysis
+
 ![Class Distribution](/results/class_distribution.png)
 
 The Enron Spam Dataset was used for this project, comprising:
@@ -62,13 +63,14 @@ The model was fine-tuned with the following parameters:
 
 The model showed steady improvements across training epochs. The table below summarizes the training and validation loss along with overall accuracy:
 
-| Epoch | Training Loss | Validation Loss | Accuracy   |
-|-------|----------------|------------------|------------|
-| 1     | 0.0383         | 0.0322           | 99.03%     |
-| 2     | 0.0135         | 0.0389           | 99.36%     |
-| 3     | 0.0009         | 0.0391           | 99.36%     |
+| Epoch | Training Loss | Validation Loss | Accuracy |
+| ----- | ------------- | --------------- | -------- |
+| 1     | 0.0383        | 0.0322          | 99.03%   |
+| 2     | 0.0135        | 0.0389          | 99.36%   |
+| 3     | 0.0009        | 0.0391          | 99.36%   |
 
 ### Highlights:
+
 - **Training Accuracy**: ~100%, with a near-zero training loss by epoch 3, indicating a strong model fit.
 - **Validation Accuracy**: 99.36%, validating the model’s ability to generalize to unseen data.
 - **Test Accuracy**: 99.36%, with consistent results across all splits and minimal performance degradation.
@@ -85,21 +87,22 @@ The model showed steady improvements across training epochs. The table below sum
 ### 🔍 Class-wise Breakdown
 
 | Class    | Precision | Recall | F1-Score | Support |
-|----------|-----------|--------|----------|---------|
+| -------- | --------- | ------ | -------- | ------- |
 | Ham (0)  | 0.99      | 0.99   | 0.99     | 3,299   |
 | Spam (1) | 0.99      | 0.99   | 0.99     | 3,370   |
 
 ### 📈 Overall Metrics
 
-| Metric             | Score |
-|--------------------|-------|
+| Metric             | Score  |
+| ------------------ | ------ |
 | Accuracy           | 0.9936 |
-| Macro Avg F1-Score | 0.99  |
-| Weighted F1-Score  | 0.99  |
-| Total Samples      | 6,669 |
+| Macro Avg F1-Score | 0.99   |
+| Weighted F1-Score  | 0.99   |
+| Total Samples      | 6,669  |
 
 > **Note**:
-> - Class 0 = **Ham** (legitimate emails)  
+>
+> - Class 0 = **Ham** (legitimate emails)
 > - Class 1 = **Spam** (unsolicited emails)
 
 ---
@@ -109,6 +112,7 @@ The model showed steady improvements across training epochs. The table below sum
 ![Confusion Matrix](results/distilbert/distilbert_conf_matrix.png)
 
 The confusion matrix shows the following counts:
+
 - **Ham correctly classified**: 3,276
 - **Ham misclassified as spam**: 23
 - **Spam correctly classified**: 3,350
@@ -125,7 +129,6 @@ This distribution confirms the model's strong performance, with **only 43 total 
 - **F1-Score**: Offers a balanced view, important when both errors carry user impact.
 
 The strong balance between precision and recall ensures that important messages are preserved while harmful content is effectively filtered.
-
 
 # 📈 Model Visualization
 
@@ -144,6 +147,7 @@ The figure above shows a t-distributed Stochastic Neighbor Embedding (t-SNE) plo
 - **sample size 500**
 
 ### Key Observations:
+
 - The t-SNE visualization shows **clear separation** between spam and ham clusters, suggesting that the model learned **discriminative features** that effectively differentiate between the two classes.
 - A few points near the decision boundary indicate **hard-to-classify** cases, such as edge cases or possibly mislabeled samples.
 
@@ -160,6 +164,7 @@ The Receiver Operating Characteristic (ROC) curve illustrates the trade-off betw
 - **AUC (Area Under Curve)** = **1.000**, which indicates **perfect classification**.
 
 ### Key Observations:
+
 - The curve hugs the top-left corner, which reflects **excellent classification capability** across all thresholds.
 - Threshold markers show that the model is robust to slight variations in the decision boundary.
 - An AUC of **1.000** confirms that the classifier can **perfectly distinguish** between spam and ham on the test set.
@@ -168,7 +173,6 @@ The Receiver Operating Characteristic (ROC) curve illustrates the trade-off betw
 
 These visualizations further validate the **reliability**, **robustness**, and **interpretability** of our DistilBERT-based spam detection model.
 
-
 # 📊 Model Comparison
 
 ## Comparison with other Neural Networks Model
@@ -176,24 +180,47 @@ These visualizations further validate the **reliability**, **robustness**, and *
 To evaluate the effectiveness of our transformer-based approach, we implemented and compared it with three other commonly used models for text classification: Multilayer Perceptron (MLP), Convolutional Neural Network (CNN), and a Word2Vec + Logistic Regression baseline. The goal was to assess the performance gap between traditional, CNN-based, and transformer-based architectures on the Enron Spam Dataset.
 
 ### 1. **DistilBERT (Our most advanced model)**
+
 - **Test Accuracy**: **99.36%**
-- **Confusion Matrix**:  
-  - Ham correctly classified: 3276  
-  - Spam correctly classified: 3350  
-  - Misclassifications: 43 (23 FP, 20 FN)  
+- **Confusion Matrix**:
+  - Ham correctly classified: 3276
+  - Spam correctly classified: 3350
+  - Misclassifications: 43 (23 FP, 20 FN)
 - **Observations**:
   - Best overall performance
   - Minimal training required for convergence
   - Robust generalization
 
 ### 2. **Multilayer Perceptron (MLP)**
+
+### Implementation Details:
+
+- **Feature Extraction**: TF-IDF vectorization with 5,000 features
+- **Architecture**:
+  ```
+  SpamMLP(
+    (model): Sequential(
+      (0): Linear(in_features=5000, out_features=512, bias=True)
+      (1): ReLU()
+      (2): Dropout(p=0.5, inplace=False)
+      (3): Linear(in_features=512, out_features=128, bias=True)
+      (4): ReLU()
+      (5): Dropout(p=0.5, inplace=False)
+      (6): Linear(in_features=128, out_features=2, bias=True)
+    )
+  )
+  ```
+- **Regularization**: Dropout layers with 0.5 rate
+- **Training**: Adam optimizer with learning rate 0.001
+- **Epochs**: 10
+
 ![alt text](results/mlp/mlp_confusion.png)
 
 - **Test Accuracy**: ~**98.84%**
-- **Confusion Matrix**:  
-  - Ham correctly classified: 3264  
-  - Spam correctly classified: 3417  
-  - Misclassifications: 63 (45 FP, 18 FN)  
+- **Confusion Matrix**:
+  - Ham correctly classified: 3264
+  - Spam correctly classified: 3417
+  - Misclassifications: 63 (45 FP, 18 FN)
 - **Training Trend**:
   - Slight increase in validation loss after epoch 6, suggesting mild overfitting
 - **Observations**:
@@ -202,13 +229,14 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Struggles slightly more with edge cases
 
 ### 3. **Convolutional Neural Network (CNN)**
+
 ![alt text](results/cnn/cnn_confusion.png)
 
 - **Test Accuracy**: ~**98.86%**
-- **Confusion Matrix**:  
-  - Ham correctly classified: 3264  
-  - Spam correctly classified: 3413  
-  - Misclassifications: 67 (45 FP, 22 FN)  
+- **Confusion Matrix**:
+  - Ham correctly classified: 3264
+  - Spam correctly classified: 3413
+  - Misclassifications: 67 (45 FP, 22 FN)
 - **Training Trend**:
   - Stable convergence; validation accuracy plateaued after epoch 5
 - **Observations**:
@@ -217,13 +245,14 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Not as expressive as transformers for long-range dependencies
 
 ### 4. **Word2Vec + Logistic Regression**
+
 ![alt text](results/word2vec/w2vec_confusion.png)
 
 - **Test Accuracy**: ~**97.77%**
-- **Confusion Matrix**:  
-  - Ham correctly classified: 3269  
-  - Spam correctly classified: 3382  
-  - Misclassifications: 93 (40 FP, 53 FN)  
+- **Confusion Matrix**:
+  - Ham correctly classified: 3269
+  - Spam correctly classified: 3382
+  - Misclassifications: 93 (40 FP, 53 FN)
 - **Training Trend**:
   - Training and validation accuracy quickly converge; limited capacity
 - **Observations**:
@@ -235,16 +264,17 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
 
 ### 📌 Summary Table
 
-| Model                    | Accuracy | FP  | FN  | Total Errors | Comments                            |
-|--------------------------|----------|-----|-----|---------------|-------------------------------------|
-| **DistilBERT**           | 99.36%   | 23  | 20  | **43**        | Best generalization and accuracy    |
-| MLP                      | 98.84%   | 45  | 18  | 63            | Slightly overfits, decent accuracy  |
-| CNN                      | 98.86%   | 45  | 22  | 67            | Effective on local text features    |
-| Word2Vec + Logistic Reg. | 97.77%   | 40  | 53  | 93            | Fast but least accurate             |
+| Model                    | Accuracy | FP  | FN  | Total Errors | Comments                           |
+| ------------------------ | -------- | --- | --- | ------------ | ---------------------------------- |
+| **DistilBERT**           | 99.36%   | 23  | 20  | **43**       | Best generalization and accuracy   |
+| MLP                      | 98.84%   | 45  | 18  | 63           | Slightly overfits, decent accuracy |
+| CNN                      | 98.86%   | 45  | 22  | 67           | Effective on local text features   |
+| Word2Vec + Logistic Reg. | 97.77%   | 40  | 53  | 93           | Fast but least accurate            |
 
 ---
 
 ### 🔍 Key Insights
+
 - **Transformer advantage**: DistilBERT outperforms others by capturing global context and subtle semantic differences.
 - **Tradeoff**: Simpler models like MLP and Word2Vec require less compute and memory but sacrifice accuracy.
 - **Error distribution**: All models favor lower false negatives over false positives, but DistilBERT maintains the best balance.
@@ -254,6 +284,7 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
 To assess the relative performance and novelty of our DistilBERT-based spam detection model, we compare it against two recent works that also employed transformer-based models, particularly BERT or its successors, on the **Enron Spam Dataset**.
 
 ### 1. **Shrestha et al. (2023)** – University of Toledo Thesis
+
 - **Model Used**: Fine-tuned XLNet (successor of BERT)
 - **Dataset**: Enron Spam Dataset
 - **Reported Accuracy**: **98.92%**
@@ -272,6 +303,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
   - No evidence of adversarial or cross-domain evaluation
 
 ### 2. **Tang & Li (2024)** – Johns Hopkins Study
+
 - **Model Used**: Fine-tuned BERT (HuggingFace `BertForSequenceClassification`)
 - **Dataset**: Enron
 - **Reported Accuracy**: **98.91%**
@@ -293,6 +325,7 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 ---
 
 ### ✅ Our DistilBERT-Based Approach
+
 - **Model Used**: Fine-tuned `distilbert-base-uncased`
 - **Dataset**: Enron Spam Dataset
 - **Reported Accuracy**: **99.36%**
@@ -313,20 +346,19 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 
 ### 📌 Summary Table
 
-| Work                         | Model     | Accuracy | F1 Score | FNR    | Notes                                |
-|------------------------------|-----------|----------|----------|--------|--------------------------------------|
-| **Our Work**                 | DistilBERT| 99.36%   | 0.99     | ~0.30% | Best performance, lightest model     |
-| Shrestha et al. (2023)       | XLNet     | 98.92%   | 0.9892   | N/A    | Larger model, tested on 3 datasets   |
-| Tang & Li (2024)             | BERT      | 98.91%   | 0.9868   | 1.21%  | Tested for adversarial robustness    |
+| Work                   | Model      | Accuracy | F1 Score | FNR    | Notes                              |
+| ---------------------- | ---------- | -------- | -------- | ------ | ---------------------------------- |
+| **Our Work**           | DistilBERT | 99.36%   | 0.99     | ~0.30% | Best performance, lightest model   |
+| Shrestha et al. (2023) | XLNet      | 98.92%   | 0.9892   | N/A    | Larger model, tested on 3 datasets |
+| Tang & Li (2024)       | BERT       | 98.91%   | 0.9868   | 1.21%  | Tested for adversarial robustness  |
 
 ---
 
 ### 🧠 Key Insights
+
 - Our model **outperforms** both XLNet and BERT-based implementations on the same dataset, with **higher accuracy and F1 score**.
 - **DistilBERT achieves competitive results with significantly fewer parameters**, making it suitable for real-time spam filtering.
 - Unlike Tang & Li (2024), we **did not explore adversarial or cross-dataset generalization**, which are useful future directions.
-
-
 
 # Performance Analysis and Discussion
 
