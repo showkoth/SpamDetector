@@ -468,6 +468,36 @@ To assess the relative performance and novelty of our DistilBERT-based spam dete
 - **DistilBERT achieves competitive results with significantly fewer parameters**, making it suitable for real-time spam filtering.
 - Unlike Tang & Li (2024), we **did not explore adversarial or cross-dataset generalization**, which are useful future directions.
 
+# Discussions
+
+## Strengths of the Model
+
+1. **Exceptional Accuracy**: 99.36% accuracy on both validation and test sets demonstrates robust performance.
+
+2. **Balanced Performance**: Nearly identical precision and recall for both classes indicates the model isn't biased toward either spam or ham classification.
+
+3. **Minimal Overfitting**: The similar performance on training and validation sets suggests good generalization. The slight increase in validation loss in later epochs is marginal and doesn't result in decreased accuracy.
+
+4. **Fast Convergence**: The model reached high accuracy within just 3 epochs, suggesting efficient learning from the data.
+
+## Potential Concerns
+
+1. **Nearly Perfect Accuracy**: While impressive, the extremely high accuracy (99.36%) raises questions about whether:
+
+   - The test set might be too similar to the training data
+   - The model might be memorizing specific patterns rather than learning generalizable features
+   - The dataset might contain obvious indicators that make classification unusually easy
+
+2. **Validation Loss Increase**: There's a slight increase in validation loss in epochs 2–3 while accuracy remains stable, which could be an early sign of overfitting if training continued.
+
+## Ideas for Further Improvement
+
+Despite the model's strong performance, several enhancements could be considered:
+
+- Expanded Training Data: Include most recent training data.
+- Data Augmentation: Introduce variations of existing emails by synonym replacement or LLM generated data.
+- Cross-dataset Evaluation: Test the model on different spam datasets to ensure it generalizes across various types of spam and legitimate emails from different sources and time periods.
+
 # Conclusion
 
 The DistilBERT-based spam detection model demonstrates exceptional performance on the Enron Spam Dataset, with balanced precision and recall across both spam and legitimate email classes. While the extremely high accuracy suggests strong classification capability, additional testing on diverse datasets would help confirm the model's robustness in real-world scenarios. Our implementation successfully leverages transfer learning from pre-trained transformer models, requiring minimal preprocessing while achieving state-of-the-art results. This approach represents a significant advancement over traditional rule-based or classical machine learning methods for spam detection. Future work should focus on ensuring the model's ability to generalize to new and evolving spam tactics through techniques like data augmentation or cross-dataset evaluation.
