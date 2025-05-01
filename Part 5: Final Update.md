@@ -299,7 +299,7 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
 
 ### 4. **DistilBERT (Our most advanced model)**
 
-For this model, we already discussed the model architecture and performance in the above section. Below is the summary:
+For this model, we already discussed the model architecture and performance in the above section. Below is the performance summary:
 
 - **Test Accuracy**: **99.36%**
 - **Confusion Matrix**:
@@ -323,6 +323,40 @@ For this model, we already discussed the model architecture and performance in t
 | Word2Vec + Logistic Reg. | 97.77%   | 40  | 53  | 93           | Fast but least accurate            |
 
 ---
+
+## Learning Curve Analysis
+
+The learning curves for each model reveal important insights into their training dynamics:
+
+### MLP Model
+
+![alt text](results/mlp/mlp_training.png)
+
+- Training and validation losses decrease consistently throughout training
+- Both training and validation accuracy reach plateaus around 98-99%
+- No significant gap between training and validation metrics, suggesting good generalization
+
+### CNN Model
+
+![alt text](results/cnn/cnn_training.png)
+
+- Very rapid initial decrease in loss and increase in accuracy
+- After epoch 4, the training accuracy continues to improve while validation accuracy plateaus
+- Small divergence between training and validation accuracy after epoch 6, but not concerning
+
+### Word2Vec Model
+
+![alt text](results/word2vec/w2vec_training.png)
+
+- Training loss decreases to near zero while validation loss increases after epoch 3
+- Growing gap between training accuracy (approaching 100%) and validation accuracy (around 98.6%)
+- Clear signs of overfitting despite regularization techniques like dropout and batch normalization
+
+### DistilBERT Model
+
+![alt text](results/distilbert/training.png)
+
+All models show excellent precision and recall for both classes, but Word2Vec has a slight tendency to misclassify spam as legitimate, which could be more problematic in a real-world application (missing spam is generally worse than incorrectly flagging legitimate emails).
 
 ### 🔍 Key Insights
 
