@@ -179,19 +179,7 @@ These visualizations further validate the **reliability**, **robustness**, and *
 
 To evaluate the effectiveness of our transformer-based approach, we implemented and compared it with three other commonly used models for text classification: Multilayer Perceptron (MLP), Convolutional Neural Network (CNN), and a Word2Vec + Logistic Regression baseline. The goal was to assess the performance gap between traditional, CNN-based, and transformer-based architectures on the Enron Spam Dataset.
 
-### 1. **DistilBERT (Our most advanced model)**
-
-- **Test Accuracy**: **99.36%**
-- **Confusion Matrix**:
-  - Ham correctly classified: 3276
-  - Spam correctly classified: 3350
-  - Misclassifications: 43 (23 FP, 20 FN)
-- **Observations**:
-  - Best overall performance
-  - Minimal training required for convergence
-  - Robust generalization
-
-### 2. **Multilayer Perceptron (MLP)**
+### 1. **Multilayer Perceptron (MLP)**
 
 #### Implementation Details:
 
@@ -228,7 +216,7 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Simpler and faster to train than transformers
   - Struggles slightly more with edge cases
 
-### 3. **Convolutional Neural Network (CNN)**
+### 2. **Convolutional Neural Network (CNN)**
 
 #### Implementation Details:
 
@@ -266,7 +254,7 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Performs better than MLP on slightly longer email bodies
   - Not as expressive as transformers for long-range dependencies
 
-### 4. **Word2Vec + Logistic Regression**
+### 3. **Word2Vec + Logistic Regression**
 
 #### Implementation Details:
 
@@ -309,9 +297,23 @@ To evaluate the effectiveness of our transformer-based approach, we implemented 
   - Word2Vec lacks context sensitivity compared to BERT
   - Struggles with nuanced semantics or rare patterns
 
+### 4. **DistilBERT (Our most advanced model)**
+
+For this model, we already discussed the model architecture and performance in the above section. Below is the summary:
+
+- **Test Accuracy**: **99.36%**
+- **Confusion Matrix**:
+  - Ham correctly classified: 3276
+  - Spam correctly classified: 3350
+  - Misclassifications: 43 (23 FP, 20 FN)
+- **Observations**:
+  - Best overall performance
+  - Minimal training required for convergence
+  - Robust generalization
+
 ---
 
-### 📌 Summary Table
+### 📌 Comparison Summary Table
 
 | Model                    | Accuracy | FP  | FN  | Total Errors | Comments                           |
 | ------------------------ | -------- | --- | --- | ------------ | ---------------------------------- |
